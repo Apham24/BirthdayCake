@@ -70,7 +70,7 @@ private CakeModel cakeModel = null;
      */
     public void drawCandle(Canvas canvas, float left, float bottom) {
        if(cakeModel.candleStatus) {
-           canvas.drawRect(left, bottom - candleHeight, left + candleWidth, bottom, candlePaint);
+           canvas.drawRect(left, bottom - candleHeight, left + candleWidth*2, bottom, candlePaint);
            if (cakeModel.litStatus) {
                //draw the outer flame
                float flameCenterX = left + candleWidth / 2;
