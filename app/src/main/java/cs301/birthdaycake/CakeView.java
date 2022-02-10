@@ -47,7 +47,7 @@ private CakeModel cakeModel = null;
         setWillNotDraw(false);
 
         //Setup our palette
-        cakePaint.setColor(0xFFC755B5);  //violet-red
+        cakePaint.setColor(Color.YELLOW);  //violet-red
         cakePaint.setStyle(Paint.Style.FILL);
         frostingPaint.setColor(0xFFFFFACD);  //pale yellow
         frostingPaint.setStyle(Paint.Style.FILL);
@@ -70,7 +70,7 @@ private CakeModel cakeModel = null;
      */
     public void drawCandle(Canvas canvas, float left, float bottom) {
        if(cakeModel.candleStatus) {
-           canvas.drawRect(left, bottom - candleHeight, left + candleWidth, bottom, candlePaint);
+           canvas.drawRect(left, bottom - candleHeight, left + candleWidth*2, bottom, candlePaint);
            if (cakeModel.litStatus) {
                //draw the outer flame
                float flameCenterX = left + candleWidth / 2;
