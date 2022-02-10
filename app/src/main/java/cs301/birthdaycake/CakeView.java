@@ -17,6 +17,10 @@ private CakeModel cakeModel = null;
     Paint innerFlamePaint = new Paint();
     Paint wickPaint = new Paint();
 
+    Paint greenPaint = new Paint();
+    Paint redPaint = new Paint();
+
+
     /* These constants define the dimensions of the cake.  While defining constants for things
         like this is good practice, we could be calculating these better by detecting
         and adapting to different tablets' screen sizes and resolutions.  I've deliberately
@@ -59,6 +63,9 @@ private CakeModel cakeModel = null;
         innerFlamePaint.setStyle(Paint.Style.FILL);
         wickPaint.setColor(Color.BLACK);
         wickPaint.setStyle(Paint.Style.FILL);
+
+        greenPaint.setColor(Color.GREEN);
+        redPaint.setColor(Color.RED);
 
         setBackgroundColor(Color.WHITE);  //better than black default
 
@@ -126,7 +133,16 @@ private CakeModel cakeModel = null;
         }
         //drawCandle(canvas, cakeLeft + cakeWidth/3 + cakeWidth/3, cakeTop);
 
+        if ((this.cakeModel.x > -1) && (this.cakeModel.y > -1)){
+
+            canvas.drawRect((float)(this.cakeModel.x - 50), (float)(this.cakeModel.y - 50), (float)(this.cakeModel.x), (float)(this.cakeModel.y), greenPaint);
+            canvas.drawRect((float)(this.cakeModel.x), (float)(this.cakeModel.y - 50), (float)(this.cakeModel.x + 50), (float)(this.cakeModel.y), redPaint);
+            canvas.drawRect((float)(this.cakeModel.x - 50), (float)(this.cakeModel.y + 50), (float)(this.cakeModel.x), (float)(this.cakeModel.y), redPaint);
+            canvas.drawRect((float)(this.cakeModel.x), (float)(this.cakeModel.y), (float)(this.cakeModel.x + 50), (float)(this.cakeModel.y + 50), greenPaint);
+
+        }
     }//onDraw
+
 public CakeModel getCakeModel(){return this.cakeModel;}
 }//class CakeView
 

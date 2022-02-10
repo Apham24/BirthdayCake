@@ -6,5 +6,8 @@ public class CakeModel {
     public boolean frostingStatus = true;
     public boolean candleStatus = true;
 
+    public float x = -1;
+    public float y = -1;
+
 
 }
