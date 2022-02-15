@@ -19,7 +19,10 @@ public class MainActivity extends AppCompatActivity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         setContentView(R.layout.activity_main);
         CakeView cakeView = findViewById(R.id.cakeview);
+
         CakeController cakeController = new CakeController(cakeView);
+        cakeView.setOnTouchListener(cakeController);
+
         Button blowButton = findViewById(R.id.button);
         CompoundButton candSwitch = findViewById(R.id.switch1);
         SeekBar numCand = findViewById(R.id.seekBar);

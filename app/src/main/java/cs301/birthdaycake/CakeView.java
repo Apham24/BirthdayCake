@@ -18,6 +18,12 @@ private CakeModel cakeModel = null;
     Paint outerFlamePaint = new Paint();
     Paint innerFlamePaint = new Paint();
     Paint wickPaint = new Paint();
+    Paint textPaint = new Paint();
+    Canvas canvas;
+
+    Paint greenPaint = new Paint();
+    Paint redPaint = new Paint();
+
 
     ArrayList<blueBalloon> balloons = new ArrayList<>();
 
@@ -63,7 +69,10 @@ private CakeModel cakeModel = null;
         innerFlamePaint.setStyle(Paint.Style.FILL);
         wickPaint.setColor(Color.BLACK);
         wickPaint.setStyle(Paint.Style.FILL);
-
+        redPaint.setColor(0xFFFF0000);
+        greenPaint.setColor(0xFF00FF00);
+        textPaint.setTextSize(50.0f);
+        textPaint.setColor(0xFFFF0000);
         setBackgroundColor(Color.WHITE);  //better than black default
 
     }
@@ -132,11 +141,23 @@ private CakeModel cakeModel = null;
             drawCandle(canvas,  + cakeWidth/cakeModel.numCandle + (cakeWidth * i)/cakeModel.numCandle, cakeTop);
         }
         //drawCandle(canvas, cakeLeft + cakeWidth/3 + cakeWidth/3, cakeTop);
+        //this.canvas = canvas;
+        if(cakeModel.clicked){
+            canvas.drawText("( " + cakeModel.xCord + " , " + cakeModel.yCord + " )",1700,750, textPaint);
+        }
+
+        if ((this.cakeModel.xCord > -1) && (this.cakeModel.yCord > -1)){
 
         for (blueBalloon i: balloons) {
             i.draw(canvas);
         }
 
+            canvas.drawRect((float)(this.cakeModel.xCord - 50), (float)(this.cakeModel.yCord - 50), (float)(this.cakeModel.xCord), (float)(this.cakeModel.yCord), greenPaint);
+            canvas.drawRect((float)(this.cakeModel.xCord), (float)(this.cakeModel.yCord - 50), (float)(this.cakeModel.xCord + 50), (float)(this.cakeModel.yCord), redPaint);
+            canvas.drawRect((float)(this.cakeModel.xCord - 50), (float)(this.cakeModel.yCord + 50), (float)(this.cakeModel.xCord), (float)(this.cakeModel.yCord), redPaint);
+            canvas.drawRect((float)(this.cakeModel.xCord), (float)(this.cakeModel.yCord), (float)(this.cakeModel.xCord + 50), (float)(this.cakeModel.yCord + 50), greenPaint);
+
+        }
     }//onDraw
 
 public CakeModel getCakeModel(){return this.cakeModel;}
