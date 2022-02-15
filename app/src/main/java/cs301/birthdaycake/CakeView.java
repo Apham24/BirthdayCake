@@ -19,6 +19,10 @@ private CakeModel cakeModel = null;
     Paint textPaint = new Paint();
     Canvas canvas;
 
+    Paint greenPaint = new Paint();
+    Paint redPaint = new Paint();
+
+
     /* These constants define the dimensions of the cake.  While defining constants for things
         like this is good practice, we could be calculating these better by detecting
         and adapting to different tablets' screen sizes and resolutions.  I've deliberately
@@ -35,6 +39,7 @@ private CakeModel cakeModel = null;
     public static final float wickWidth = 6.0f;
     public static final float outerFlameRadius = 30.0f;
     public static final float innerFlameRadius = 15.0f;
+
 
 
     /**
@@ -60,9 +65,6 @@ private CakeModel cakeModel = null;
         innerFlamePaint.setStyle(Paint.Style.FILL);
         wickPaint.setColor(Color.BLACK);
         wickPaint.setStyle(Paint.Style.FILL);
-        textPaint.setColor(Color.RED);
-        textPaint.setTextSize(50.0f);
-        textPaint.setStyle(Paint.Style.FILL);
 
         setBackgroundColor(Color.WHITE);  //better than black default
 
@@ -133,9 +135,16 @@ private CakeModel cakeModel = null;
         if(cakeModel.clicked){
             canvas.drawText("( " + cakeModel.xCord + " , " + cakeModel.yCord + " )",1700,750, textPaint);
         }
+
+        if ((this.cakeModel.xCord > -1) && (this.cakeModel.yCord > -1)){
+
+            canvas.drawRect((float)(this.cakeModel.xCord - 50), (float)(this.cakeModel.yCord - 50), (float)(this.cakeModel.xCord), (float)(this.cakeModel.yCord), greenPaint);
+            canvas.drawRect((float)(this.cakeModel.xCord), (float)(this.cakeModel.yCord - 50), (float)(this.cakeModel.xCord + 50), (float)(this.cakeModel.yCord), redPaint);
+            canvas.drawRect((float)(this.cakeModel.xCord - 50), (float)(this.cakeModel.yCord + 50), (float)(this.cakeModel.xCord), (float)(this.cakeModel.yCord), redPaint);
+            canvas.drawRect((float)(this.cakeModel.xCord), (float)(this.cakeModel.yCord), (float)(this.cakeModel.xCord + 50), (float)(this.cakeModel.yCord + 50), greenPaint);
+
+        }
     }//onDraw
 public CakeModel getCakeModel(){return this.cakeModel;}
-//public void drawText(){
-    //    canvas.drawText("( " + cakeModel.xCord + " , " + cakeModel.yCord + " )",this.getHeight() - 100,this.getWidth() - 100,textPaint);
-  //  }
 }//class CakeView
+
