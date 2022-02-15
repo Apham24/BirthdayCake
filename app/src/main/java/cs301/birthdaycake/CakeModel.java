@@ -5,6 +5,9 @@ public class CakeModel {
     public int numCandle = 2;
     public boolean frostingStatus = true;
     public boolean candleStatus = true;
+    int xCord;
+    int yCord;
+    public boolean clicked=false;
 
 
 }
