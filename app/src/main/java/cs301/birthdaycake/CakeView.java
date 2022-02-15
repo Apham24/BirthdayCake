@@ -7,6 +7,8 @@ import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.view.SurfaceView;
 
+import java.util.ArrayList;
+
 public class CakeView extends SurfaceView {
 private CakeModel cakeModel = null;
     /* These are the paints we'll use to draw the birthday cake below */
@@ -16,6 +18,8 @@ private CakeModel cakeModel = null;
     Paint outerFlamePaint = new Paint();
     Paint innerFlamePaint = new Paint();
     Paint wickPaint = new Paint();
+
+    ArrayList<blueBalloon> balloons = new ArrayList<>();
 
     /* These constants define the dimensions of the cake.  While defining constants for things
         like this is good practice, we could be calculating these better by detecting
@@ -88,6 +92,9 @@ private CakeModel cakeModel = null;
        }
     }
 
+    public void addBalloon(blueBalloon x) {
+        balloons.add(x);
+    }
     /**
      * onDraw is like "paint" in a regular Java program.  While a Canvas is
      * conceptually similar to a Graphics in javax.swing, the implementation has
@@ -126,7 +133,13 @@ private CakeModel cakeModel = null;
         }
         //drawCandle(canvas, cakeLeft + cakeWidth/3 + cakeWidth/3, cakeTop);
 
+        for (blueBalloon i: balloons) {
+            i.draw(canvas);
+        }
+
     }//onDraw
+
 public CakeModel getCakeModel(){return this.cakeModel;}
+
 }//class CakeView
 

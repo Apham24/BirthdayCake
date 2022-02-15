@@ -26,6 +26,8 @@ public class MainActivity extends AppCompatActivity {
         blowButton.setOnClickListener(cakeController);
         candSwitch.setOnCheckedChangeListener(cakeController);
         numCand.setOnSeekBarChangeListener(cakeController);
+
+        cakeView.setOnTouchListener(cakeController);
     }
     public void goodbye(View button){
         //System.out.println("Goodbye");
