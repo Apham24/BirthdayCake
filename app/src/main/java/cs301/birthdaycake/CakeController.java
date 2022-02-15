@@ -8,7 +8,7 @@ import android.widget.CompoundButton;
 import android.widget.ProgressBar;
 import android.widget.SeekBar;
 
-public class CakeController implements CompoundButton.OnCheckedChangeListener, View.OnClickListener, SeekBar.OnSeekBarChangeListener{
+public class CakeController implements CompoundButton.OnCheckedChangeListener, View.OnClickListener, SeekBar.OnSeekBarChangeListener,View.OnTouchListener{
     private CakeView cakeView = null;
     private CakeModel cakeModel = null;
     public CakeController(CakeView cakeView){
@@ -51,7 +51,7 @@ public class CakeController implements CompoundButton.OnCheckedChangeListener, V
         cakeModel.yCord = (int) motionEvent.getY();
         //cakeView.drawText();
         cakeModel.clicked = true;
-        blueBalloon randomSpot = new blueBalloon(x, y);
+        blueBalloon randomSpot = new blueBalloon(cakeModel.xCord, cakeModel.yCord);
         cakeView.addBalloon(randomSpot);
         cakeView.invalidate();
         return true;

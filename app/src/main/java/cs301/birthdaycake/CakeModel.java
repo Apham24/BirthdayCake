@@ -9,8 +9,6 @@ public class CakeModel {
     int yCord;
     public boolean clicked=false;
 
-    public float x = -1;
-    public float y = -1;
 
 
 }
