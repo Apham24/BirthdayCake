@@ -65,7 +65,10 @@ private CakeModel cakeModel = null;
         innerFlamePaint.setStyle(Paint.Style.FILL);
         wickPaint.setColor(Color.BLACK);
         wickPaint.setStyle(Paint.Style.FILL);
-
+        redPaint.setColor(0xFFFF0000);
+        greenPaint.setColor(0xFF00FF00);
+        textPaint.setTextSize(50.0f);
+        textPaint.setColor(0xFFFF0000);
         setBackgroundColor(Color.WHITE);  //better than black default
 
     }
